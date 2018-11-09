@@ -1,0 +1,8 @@
+---
+# defaults file for security-group-config
+auth_url: https://x.x.x.x:13000
+project_name: admin
+domain_name: default
+
+security_group: default
+remote_ip_prefix: 0.0.0.0/0

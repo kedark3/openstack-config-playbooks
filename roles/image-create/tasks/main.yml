@@ -1,0 +1,24 @@
+---
+# tasks file for image-create
+- name: Download images to /tmp
+  get_url:
+    url: "{{ item.image_url }}"
+    dest: /tmp/
+  loop: "{{ images }}"
+
+- name: Create OSP Image from "{{ item.image_url }}"
+  os_image:
+    auth:
+      auth_url: "{{ auth_url }}"
+      username: "{{ user }}"
+      password: "{{ password }}"
+      project_name: "{{ project_name }}"
+      domain_name: "{{ domain_name }}"
+    verify: false
+    state: present
+    name: "{{ item.name }}"
+    filename: "/tmp/{{ item.name }}.qcow2"
+    container_format: bare
+    disk_format: qcow2
+    is_public: yes
+  loop: "{{ images }}"

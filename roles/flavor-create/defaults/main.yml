@@ -1,0 +1,32 @@
+---
+# defaults file for flavor-create
+config_file: "{{ lookup('env', 'OS_CLIENT_CONFIG_FILE') }}"
+auth_url: https://10.8.197.84:13000
+project_name: admin
+domain_name: default
+flavors:
+  - name: m1.tiny
+    id: 0
+    disk_gb: 10
+    memory_mb: 1024
+    vcpu_count: 1
+  - name: m1.small
+    id: 1
+    disk_gb: 20
+    memory_mb: 2048
+    vcpu_count: 2
+  - name: m1.medium
+    id: 2
+    disk_gb: 40
+    memory_mb: 2048
+    vcpu_count: 2
+  - name: m1.large
+    id: 3
+    disk_gb: 80
+    memory_mb: 4096
+    vcpu_count: 4
+  - name: m1.jumbo
+    id: 4
+    disk_gb: 120
+    memory_mb: 4096
+    vcpu_count: 4

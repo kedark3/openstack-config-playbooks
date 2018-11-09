@@ -1,0 +1,11 @@
+---
+# defaults file for image-create
+project_name: admin
+domain_name: default
+auth_url: https://x.x.x.x:13000
+
+images:
+  - image_url: http://file.rdu.redhat.com/fdupont/ims-conversion-host-20181026-001.qcow2
+    name: ims-conversion-host-20181026-001
+  - image_url: https://download.fedoraproject.org/pub/fedora/linux/releases/29/Cloud/x86_64/images/Fedora-Cloud-Base-29-1.2.x86_64.qcow2
+    name: Fedora-Cloud-Base-29-1.2.x86_64

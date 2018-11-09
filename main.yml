@@ -1,0 +1,40 @@
+---
+- name: Wrapper Playbook
+  hosts: all
+  gather_facts: false
+  vars:
+    config_file: "{{ lookup('env', 'OS_CLIENT_CONFIG_FILE') }}"
+    user: "{{ clouds.devstack.auth.username }}"
+    password: "{{ clouds.devstack.auth.password }}"
+    domain_name: "{{ clouds.devstack.auth.domain_name}}"
+    project_name: "{{ clouds.devstack.auth.project_name}}"
+    auth_url: "{{ clouds.devstack.auth.auth_url}}"
+  tasks:
+    - debug: msg="{{ config_file }}"
+    - stat: path="{{ config_file }}"
+      register: st
+    - include_vars: "{{ config_file }}"
+      when: st.stat.exists and st.stat.isreg
+
+    - name: "Print out clouds variable"
+      debug: msg="{{ clouds|default('No clouds found') }}"
+
+    - name: Include flavor-create
+      include_role:
+        name: flavor-create
+      tags: flavor
+
+    - name: Include image-create
+      include_role:
+        name: image-create
+      tags: image
+
+    - name: Include networks-create
+      include_role:
+        name: networks-create
+      tags: networks
+
+    - name: Include security-group-config
+      include_role:
+        name: security-group-config
+      tags: security-group-config

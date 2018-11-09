@@ -1,0 +1,5 @@
+---
+# Add username and password for your OSP Keystone Endpoint, encrypt it with vault for security
+# save as main.yml
+user:
+password:

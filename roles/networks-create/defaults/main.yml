@@ -1,0 +1,20 @@
+---
+# defaults file for networks-create
+auth_url: https://x.x.x.x:13000
+project_name: admin
+domain_name: default
+networks:
+  - network_name: public
+    subnet_name: public
+    provider_physical_network: datacentre
+    is_external: true
+    provider_network_type: flat
+    is_shared: true
+    cidr: 10.8.196.0/22
+    dns_nameservers:
+      - 10.11.5.19
+      - 10.5.30.160
+      - 172.20.1.1
+    gateway_ip: 10.8.199.254
+    allocation_pool_start: 10.8.197.2
+    allocation_pool_end: 10.8.199.249

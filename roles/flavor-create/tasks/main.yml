@@ -1,0 +1,18 @@
+---
+# tasks file for flavor-create
+- name: Create OSP Flavor
+  os_nova_flavor:
+    auth:
+      auth_url: "{{ auth_url }}"
+      username: "{{ user }}"
+      password: "{{ password }}"
+      project_name: "{{ project_name }}"
+      domain_name: "{{ domain_name }}"
+    verify: false
+    state: present
+    name: "{{ item.name }}"
+    ram: "{{ item.memory_mb }}"
+    vcpus: "{{ item.vcpu_count }}"
+    disk: "{{ item.disk_gb }}"
+    flavorid: "{{ item.id }}"
+  loop: "{{ flavors }}"
